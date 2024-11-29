@@ -1,0 +1,320 @@
+<!DOCTYPE html>  
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support - Finance Tracker</title>
+
+  <!-- External CSS Links -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="support.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- External JS Libraries -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- Custom CSS for background -->
+  <style>
+    body {
+      background-image: url("Images/s.jpg"); 
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; 
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar Styling */
+    nav {
+      background-color: rgba(0, 0, 0, 0.8); 
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-links li {
+      margin: 0 20px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #d4cdcc; 
+    }
+
+    .buttons a {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #f44336;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #d32f2f;
+    }
+
+    /* Logo Styling */
+    .logo {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 40px; /* Adjust the size of the logo */
+      width: 40px;  /* Make the width equal to the height to create a perfect circle */
+      border-radius: 50%; /* This makes the logo circular */
+      margin-right: 10px;
+    }
+
+    /* Container Styling */
+    .container {
+      background-color: rgba(0, 0, 0, 0.7); 
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 100px auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .container h2 {
+      text-align: center;
+      color: #f44336;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .form-group {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #f44336;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      color: #333;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border 0.3s ease;
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #f44336;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d32f2f;
+      transform: scale(1.05);
+    }
+
+    .feedback-message {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      border-radius: 5px;
+      margin-top: 20px;
+      display: none;
+      font-size: 1.1rem;
+    }
+
+    /* Footer Styling */
+    .footer {
+      background-color: rgba(0, 0, 0, 0.8); /* Dark footer overlay */
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .footer:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer ul li {
+      margin: 0 15px;
+    }
+
+    .footer ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer ul li a:hover {
+      color: #f44336; /* Red hover effect */
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <nav>
+    <div class="logo">
+      <img src="Images/lo1.jpg" alt="Uniwallet Logo"> 
+      Uniwallet
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Tracker.html">Cash Tracker</a></li>
+      <li><a href="Transactions.html">Transactions</a></li>
+      <li><a href="./support.html">Support</a></li>
+      
+    </ul>
+
+    <div class="buttons">
+      <a href="./login.html" class="btn-head"><i class="fas fa-sign-in-alt"></i> Log In</a>
+      <a href="./sign-up.html" class="btn-head"><i class="fas fa-user-plus"></i> Sign Up</a>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <form class="signup-form" id="support-form">
+      <h2>How can we help you?</h2>
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="query">Query</label>
+        <textarea name="query" id="query" required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- Feedback Message -->
+    <div class="feedback-message" id="feedback-message">
+      Your feedback has been received. You will be contacted shortly via your Email address or the web application THANK YOU!!
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </footer>
+
+  <!-- JS Scripts -->
+  <script>
+    feather.replace();
+
+    // Handle form submission
+    document.getElementById('support-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Show the feedback message immediately
+      document.getElementById('feedback-message').style.display = 'block';
+
+      // After 2 minutes (120 seconds), hide the feedback message
+      setTimeout(function() {
+        document.getElementById('feedback-message').style.display = 'none';
+      }, 120000); // 120000ms = 2 minutes
+    });
+  </script>
+</body>
+
+</html>

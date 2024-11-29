@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Finance Tracker</title>
+  <style>
+    
+    body {
+      background-image: url("Images/v.jpg");
+      background-size: cover;
+      background-position: center;
+      transition: background-color 0.3s ease-in-out;
+      font-family: Arial, sans-serif;
+    }
+
+ 
+    body:hover {
+      background-color: rgba(255, 255, 255, 0.8); 
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      backdrop-filter: blur(10px);
+    }
+
+    form {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .login-form {
+      display: grid;
+      align-self: center;
+      padding: 20px;
+      background-color: rgba(242, 242, 242, 0.9); 
+      border-radius: 4px;
+    }
+
+    .login-form h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 0.2px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: rgb(255, 0, 0);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="navbar">
+      <ul class="nav-links">
+        <li><a href="Home.html">Home</a></li>
+      </ul>
+      <div class="buttons">
+        <a href="./sign-up.html" class="btn-head"><i class="fas fa-user-plus"></i> Sign Up</a>
+        
+      </div>
+    </div>
+    
+  </nav>
+
+  <div class="container">
+    <form class="login-form" action="/login" method="post">
+      <h2>Login</h2>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="department">Department</label>
+        <input type="text" id="department" name="department" required>
+      </div>
+      <div class="form-group">
+        <label for="course-name">Course Name</label>
+        <select id="course-name" name="course-name" required>
+          <option value="" disabled selected>Select a Course</option>
+          <option value="Math">DEIT</option>
+          <option value="Science">Computer Science</option>
+          <option value="History">BSIT</option>
+          <option value="Geography">Data Science</option>
+          <option value="Literature">Robotics</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="year">Select Year</label>
+        <select id="year" name="year" required>
+          <option value="" disabled selected>Select Year</option>
+          <option value="Form 1">Year 1</option>
+          <option value="Form 2">Year 2</option>
+          <option value="Form 3">Year 3</option>
+          <option value="Form 4">Year 4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="semester">Select Semester</label>
+        <select id="semester" name="semester" required>
+          <option value="" disabled selected>Select Semester</option>
+          <option value="Semester 1">Semester 1</option>
+          <option value="Semester 2">Semester 2</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <a href="/forgot-password">Forgot Password?</a>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <footer>
+  </footer>
+
+  <script>feather.replace();</script>
+  <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

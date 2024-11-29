@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="logo-container">
+      <img src="Images/lo1.jpg" alt="Finance Dashboard Logo" class="logo">
+      <h1>Finance Dashboard</h1>
+    </div>
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="Financial_Overview.html">Overview</a>
+        </div>
+  </header>
+  <nav class="sidebar">
+    <ul>
+      <li><a href="#account-summary">Account Summary</a></li>
+      <li><a href="Transactions.html">Transactions</a></li>
+      <li><a href="Budget Analysis.html">Budget Analysis</a></li>
+      <li><a href="Profile.html">Profile</a></li>
+      <li><a href="Tracker.html">Cash Tracker</a></li>
+      <li><a href="t.html">Set Expenditure</a></li>
+      <li><a href="Budget Analysis.html">Budget Analysis</a></li>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="Financial_Overview.html">Financial Overview</a></li>
+     
+    </ul>
+  </nav>
+  <main class="dashboard-content">
+    <section id="account-summary" class="card">
+      <h2>Account Summary</h2>
+      <p><strong>Total Balance:</strong> $10,500</p>
+      <p><strong>Monthly Income:</strong> $3,200</p>
+      <p><strong>Monthly Expenses:</strong> $2,800</p>
+    </section>
+    <section id="transactions" class="card">
+      <h2>Recent Transactions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024-11-25</td>
+            <td>Grocery Shopping</td>
+            <td>-$150</td>
+          </tr>
+          <tr>
+            <td>2024-11-24</td>
+            <td>Salary</td>
+            <td>+$3,200</td>
+          </tr>
+          <tr>
+            <td>2024-11-22</td>
+            <td>Electricity Bill</td>
+            <td>-$120</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="budget-analysis" class="card">
+      <h2>Budget Analysis</h2>
+      <p>Budget Utilization: 87%</p>
+      <p>Savings Rate: 13%</p>
+    </section>
+  </main>
+
+  <style>
+ 
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background: url("Images/f-overview.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    
+    .dashboard-header {
+      background-color: #1E3D58;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .dashboard-header .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+    }
+
+    .dashboard-header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #1abc9c; /* Teal */
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #2C3E50; /* Darker Blue */
+      padding-top: 70px;
+      position: fixed;
+      height: 100%;
+      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 15px 20px;
+      margin: 5px 0;
+    }
+
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #1abc9c; /* Teal */
+      color: white;
+    }
+
+    /* Main Content */
+    .dashboard-content {
+      margin-left: 270px;
+      padding: 20px;
+      margin-top: 90px;
+      width: calc(100% - 270px);
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.95);
+      margin: 20px 0;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #34495e; /* Soft Blue */
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 5px 0;
+      color: #7f8c8d; /* Light Gray */
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table th, table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    table th {
+      background-color: #3498db;
+      color: white;
+    }
+
+    table tr:hover {
+      background-color: #ecf0f1;
+    }
+
+    table td {
+      color: #34495e; 
+    }
+
+   
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+
+      .dashboard-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+      }
+
+      .nav-links {
+        display: none; 
+      }
+    }
+  </style>
+</body>
+</html>

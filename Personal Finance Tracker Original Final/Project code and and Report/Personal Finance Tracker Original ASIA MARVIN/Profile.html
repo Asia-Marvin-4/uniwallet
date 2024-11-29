@@ -1,0 +1,249 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            background-image: url("Images/e.jpg"); 
+            transition: background-image 0.3s ease-in-out;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .nav-bar:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .nav-bar .logo img {
+            width: 50px;
+            height: 50px; 
+            border-radius: 50%; 
+        }
+        .nav-bar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-bar a:hover {
+            color: #ffcc00;
+        }
+        .profile-container {
+            text-align: center;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        .profile-container:hover {
+            transform: scale(1.02);
+        }
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            overflow: hidden;
+        }
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        .notification {
+            margin-top: 20px;
+            cursor: pointer;
+            color: #ffcc00;
+            transition: color 0.3s;
+        }
+        .notification:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .card {
+            width: 200px;
+            height: 100px;
+            margin: 0 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .balance-card {
+            background-color: green;
+        }
+        .used-card {
+            background-color: red;
+        }
+        .currency-selector {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+        .upload-container {
+            margin-top: 20px;
+        }
+        .upload-button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .upload-button:hover {
+            background-color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background" id="backgroundImage"></div>
+
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="Images/lo1.jpg" alt="Logo">
+        </div>
+        <div>
+            <a href="Profile.html">Profile</a>
+            <a href="Dashboard.html">Settings</a>
+            <a href="log.html">Logout</a>
+            <a href="Transactions.html">
+                <div class="notification-bell">
+                    <span class="notification-icon">99+</span>
+                </div>
+                Notifications
+            </a>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <!-- Profile image added here -->
+        <div class="profile-image">
+            <img src="Images/ALPHA im.jpg" alt="Profile Image">
+        </div>
+        <h1>Welcome, Asia Marvin</h1>
+        <p>Course: DEIT</p>
+        <p>University: UCU University</p>
+        <p>Year: 2:1</p>
+
+        <select class="currency-selector" id="currencySelector">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="AUD">AUD</option>
+            <option value="UGX">UGX</option>
+        </select>
+
+        <div class="notification" onclick="window.location.href='Transactions.html';">
+            Notifications 
+        </div>
+
+        <div class="card-container">
+            <div class="card balance-card">
+                <h3>Balance</h3>
+                <p id="balanceAmount">$500</p>
+            </div>
+            <div class="card used-card">
+                <h3>Used</h3>
+                <p id="usedAmount">$200</p>
+            </div>
+        </div>
+
+        <div class="upload-container">
+            <input type="file" id="imageUpload" accept="image/*" />
+            <button class="upload-button" onclick="uploadImage()">Upload Background Image</button>
+        </div>
+    </div>
+
+    <script>
+        const currencyRates = {
+            USD: { balance: 500, used: 200 },
+            EUR: { balance: 450, used: 180 },
+            GBP: { balance: 400, used: 160 },
+            AUD: { balance: 700, used: 280 },
+            UGX: { balance: 1850000, used: 740000 }
+        };
+
+        const balanceAmount = document.getElementById('balanceAmount');
+        const usedAmount = document.getElementById('usedAmount');
+        const currencySelector = document.getElementById('currencySelector');
+        const backgroundImage = document.getElementById('backgroundImage');
+
+        window.onload = function() {
+            const storedCurrency = localStorage.getItem('currency') || 'USD';
+            currencySelector.value = storedCurrency;
+            updateAmounts(storedCurrency);
+        };
+
+        currencySelector.addEventListener('change', function() {
+            const selectedCurrency = this.value;
+            localStorage.setItem('currency', selectedCurrency);
+            updateAmounts(selectedCurrency);
+        });
+
+        function updateAmounts(currency) {
+            balanceAmount.textContent = `${currency} ${currencyRates[currency].balance}`;
+            usedAmount.textContent = `${currency} ${currencyRates[currency].used}`;
+        }
+
+        function uploadImage() {
+            const fileInput = document.getElementById('imageUpload');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                backgroundImage.style.backgroundImage = `url(${e.target.result})`;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+</body>
+</html>

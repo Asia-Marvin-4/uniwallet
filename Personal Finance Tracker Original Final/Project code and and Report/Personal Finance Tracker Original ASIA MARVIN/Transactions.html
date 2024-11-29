@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Messages</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: url("Images/ms.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+      overflow: auto;
+      flex-direction: column;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+      backdrop-filter: blur(10px);
+      width: 100%;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+
+    .navbar h2 {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-right: auto;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li {
+      display: inline;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+      color: #6a11cb;
+    }
+
+    .messages-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 40px;
+      overflow-y: auto;
+      height: calc(100vh - 180px); /* Full height minus navbar */
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    }
+
+    .message {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .message.success {
+      background-color: #4CAF50;
+    }
+
+    .message.warning {
+      background-color: #FFA726;
+    }
+
+    .message.danger {
+      background-color: #EF5350;
+    }
+
+    .message p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .close-btn:hover {
+      color: #ffeb3b;
+    }
+
+    /* Add spacing between messages */
+    .messages-container {
+      padding: 20px;
+      gap: 20px;
+    }
+
+    /* Ensuring the messages don't overlap on small screens */
+    @media screen and (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        padding: 10px 20px;
+      }
+
+      .navbar h2 {
+        font-size: 1.5rem;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .messages-container {
+        max-width: 90%;
+      }
+
+      .message {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>Transaction Messages</h2>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="login.html">Logout</a></li>
+      <li><a href="support.html">Contact Us</a></li>
+      <li><a href="Budget Analysis.html">Budget Analysis</a></li>
+    </ul>
+  </nav>
+
+  <!-- Messages Container -->
+  <div class="messages-container" id="messages-container">
+    <!-- Messages will be dynamically inserted here -->
+  </div>
+
+  <script>
+    // Example transaction messages
+    const messages = [];
+
+    // Generate a large number of sample transaction messages
+    for (let i = 1; i <= 100; i++) {
+      const message = {
+        id: i,
+        text: `Transaction ${i}: Expense of $${(Math.random() * 100).toFixed(2)} made for Category ${(i % 5) + 1}.`,
+        type: ['success', 'warning', 'danger'][Math.floor(Math.random() * 3)] // Randomly assign success, warning, or danger
+      };
+      messages.push(message);
+    }
+
+    // Function to create and show messages
+    function showMessages() {
+      const messagesContainer = document.getElementById("messages-container");
+      messages.forEach(message => {
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("message", message.type);
+        messageDiv.id = `message-${message.id}`;
+        
+        messageDiv.innerHTML = ` 
+          <p>${message.text}</p>
+          <button class="close-btn" onclick="closeMessage(${message.id})">&times;</button>
+        `;
+        
+        messagesContainer.appendChild(messageDiv);
+      });
+    }
+
+    // Function to close a specific message
+    function closeMessage(id) {
+      const message = document.getElementById(`message-${id}`);
+      if (message) {
+        message.style.display = "none";
+      }
+    }
+
+    // Show the messages when the page loads
+    window.onload = showMessages;
+  </script>
+</body>
+</html>

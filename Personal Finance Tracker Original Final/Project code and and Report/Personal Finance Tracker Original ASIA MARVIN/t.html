@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Tracker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+  <style>
+    body {
+      background: url("Images/Money\ Distribution.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 40px; 
+      height: 40px; 
+      border-radius: 50%; 
+      margin-right: 10px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #4CAF50; 
+    }
+
+    .container {
+      padding: 20px;
+      margin-top: 80px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      background-color: #f1f1f1;
+    }
+
+    .form-group textarea {
+      height: 100px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .feedback-message {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      border-radius: 5px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .budget-status {
+      margin-top: 40px;
+    }
+
+    .budget-category {
+      margin-bottom: 20px;
+    }
+
+    progress {
+      width: 100%;
+      height: 20px;
+    }
+
+    .footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    .footer i {
+      font-size: 1.5rem;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="Images/lo1.jpg" alt="Logo"> 
+      Uniwallet
+    </div>
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="Budget Analysis.html">Budget Analysis</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Log Your Expenditure</h2>
+    <form id="expense-form">
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="food">Food</option>
+          <option value="utilities">Utilities</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="transport">Transport</option>
+          <option value="health">Health</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <div class="feedback-message" id="feedback-message">
+      Your expense has been logged successfully!
+    </div>
+
+    <div class="budget-status">
+      <h3>Budget Status</h3>
+      <div id="food-budget" class="budget-category">
+        <label>Food</label>
+        <progress id="food-progress" value="0" max="100"></progress>
+        <span id="food-remaining">Remaining: $100</span>
+        <button onclick="editBudget('food')">Edit</button>
+        <button onclick="deleteBudget('food')">Delete</button>
+      </div>
+      <div id="utilities-budget" class="budget-category">
+        <label>Utilities</label>
+        <progress id="utilities-progress" value="0" max="100"></progress>
+        <span id="utilities-remaining">Remaining: $50</span>
+        <button onclick="editBudget('utilities')">Edit</button>
+        <button onclick="deleteBudget('utilities')">Delete</button>
+      </div>
+      <div id="entertainment-budget" class="budget-category">
+        <label>Entertainment</label>
+        <progress id="entertainment-progress" value="0" max="100"></progress>
+        <span id="entertainment-remaining">Remaining: $80</span>
+        <button onclick="editBudget('entertainment')">Edit</button>
+        <button onclick="deleteBudget('entertainment')">Delete</button>
+      </div>
+    </div>
+
+    <h3>Financial Report</h3>
+    <canvas id="expense-chart" width="400" height="400"></canvas>
+
+    <button id="download-pdf">Download PDF Report</button>
+    <button id="download-excel">Download Excel Report</button>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Finance Tracker</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const budget = {
+      food: 100,
+      utilities: 50,
+      entertainment: 80,
+    };
+
+    let expenses = [];
+
+    document.getElementById('expense-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const category = document.getElementById('category').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+      const description = document.getElementById('description').value;
+      const date = document.getElementById('date').value;
+
+      const expense = { category, amount, description, date };
+      expenses.push(expense);
+
+      document.getElementById('feedback-message').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('feedback-message').style.display = 'none';
+      }, 2000);
+
+      updateBudgetStatus();
+      generateFinancialReport();
+    });
+
+    function updateBudgetStatus() {
+      let categoryTotals = { food: 0, utilities: 0, entertainment: 0 };
+
+      expenses.forEach(exp => {
+        categoryTotals[exp.category] += exp.amount;
+      });
+
+      Object.keys(categoryTotals).forEach(category => {
+        const progress = (categoryTotals[category] / budget[category]) * 100;
+        document.getElementById(`${category}-progress`).value = progress;
+        document.getElementById(`${category}-remaining`).textContent = `Remaining: $${(budget[category] - categoryTotals[category]).toFixed(2)}`;
+      });
+    }
+
+    function generateFinancialReport() {
+      const expenseData = [
+        { category: 'Food', amount: 0 },
+        { category: 'Utilities', amount: 0 },
+        { category: 'Entertainment', amount: 0 }
+      ];
+
+      expenses.forEach(exp => {
+        const dataCategory = expenseData.find(data => data.category === exp.category);
+        dataCategory.amount += exp.amount;
+      });
+
+      const ctx = document.getElementById('expense-chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: expenseData.map(exp => exp.category),
+          datasets: [{
+            data: expenseData.map(exp => exp.amount),
+            backgroundColor: ['#FF5733', '#33FF57', '#3357FF'],
+          }]
+        }
+      });
+    }
+
+    document.getElementById('download-pdf').addEventListener('click', function () {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.text('Financial Report', 10, 10);
+      doc.text(JSON.stringify(expenses), 10, 20);
+      doc.save('financial-report.pdf');
+    });
+
+    document.getElementById('download-excel').addEventListener('click', function () {
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(expenses);
+      XLSX.utils.book_append_sheet(wb, ws, 'Expenses');
+      XLSX.writeFile(wb, 'financial-report.xlsx');
+    });
+
+    function editBudget(category) {
+      alert(`Edit the ${category} budget`);
+      // Implement your edit functionality here
+    }
+
+    function deleteBudget(category) {
+      alert(`Delete the ${category} budget`);
+      // Implement your delete functionality here
+    }
+  </script>
+</body>
+
+</html>

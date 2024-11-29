@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="./favicon_io/android-chrome-512x512.png" sizes="64x64">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./sign-up.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Finance Tracker</title>
+
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url("Images/si.jpg"); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #00ff7f;
+    }
+
+    .buttons .btn-head {
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons .btn-head:hover {
+      background-color: #00ff7f;
+      color: #000;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .signup-form {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      width: 300px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    }
+
+    .signup-form:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #00ff7f;
+    }
+
+    .signup-form button {
+      background-color: #00ff7f;
+      color: #000;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .signup-form button:hover {
+      background-color: #00cc66;
+    }
+
+
+    body:hover {
+      background-color: #e6f7ff;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <nav>
+    <div class="navbar">
+      <ul class="nav-links">
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="Tracker.html">Cash Tracker</a></li>
+        <li><a href="Transactions.html">Transactions</a></li>
+        <li><a href="./support.html">Support</a></li>
+        <li><a href="Budget Analysis.html">Budget Analysis</a></li>
+      </ul>
+      <div class="buttons">
+        <a href="./login.html" class="btn-head"><i class="fas fa-sign-in-alt"></i> Log In</a>
+        <a href="./sign-up.html" class="btn-head"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <form class="signup-form" action="https://finance542.netlify.app/" method="post">
+      <h2>Sign Up</h2>
+      <div class="form-group">
+        <label for="fullname">Full Name </label>
+        <input type="text" id="fullname" name="fullname" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address </label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password </label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password </label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>feather.replace();</script>
+  <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

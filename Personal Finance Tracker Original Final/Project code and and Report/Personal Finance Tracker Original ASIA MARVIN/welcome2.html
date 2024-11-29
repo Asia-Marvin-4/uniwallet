@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome, Student!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        nav .logo img {
+    width: 50px;
+    height: 50px; 
+    border-radius: 50%;
+    border: 2px solid white; 
+    object-fit: cover; 
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url("Images/coins.jpg") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #0f1d70;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-radius: 0 0 10px 10px;
+        }
+
+        nav .logo img {
+            width: 50px; /* Logo size */
+            height: auto;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 80px;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #02061d;
+            color: white;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        ul li a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #0f1d70;
+            color: white;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .resource-card {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-card h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+   
+    <nav>
+        <div class="logo">
+            <img src="Images/lo1.jpg" alt="Logo">
+            <span>Uniwallet</span> 
+        </div>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Dashboard.html">Dashboard</a></li>
+            <li><a href="welcome2.html">Resources</a></li>
+            <li><a href="Budget Analysis.html">Budget Analysis</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Welcome to Your Student Portal!</h1>
+            <p>We're excited to have you here. Explore the resources available to help you succeed in your academic journey.</p>
+        </header>
+        <section class="intro">
+            <h2>Getting Started</h2>
+            <p>Here are some helpful links to kickstart your academic journey:</p>
+            <ul>
+                <li><a href="Dashboard.html">Your Dashboard</a></li>
+                <li><a href="#">Library Resources</a></li>
+                <li><a href="#">Campus Events</a></li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Academic Success Resources</h2>
+            <p>Take advantage of these resources to achieve academic excellence:</p>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Study Guides</h3>
+                    <p>Access comprehensive study guides to help you prepare for exams.</p>
+                    <a href="#">Explore Study Guides</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Time Management Tools</h3>
+                    <p>Learn how to manage your time effectively with our planning tools.</p>
+                    <a href="#">Access Tools</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Tutoring Services</h3>
+                    <p>Get personalized help from our expert tutors.</p>
+                    <a href="#">Book a Session</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Tips -->
+        <section class="study-tips">
+            <h2>Study Tips</h2>
+            <p>Effective study habits can improve your performance. Check out these tips:</p>
+            <ul>
+                <li><a href="#">How to Ace Your Finals</a></li>
+                <li><a href="#">5 Tips for Better Focus</a></li>
+                <li><a href="#">Active vs Passive Learning</a></li>
+            </ul>
+        </section>
+
+        <!-- Student Community -->
+        <section class="community">
+            <h2>Join the Student Community</h2>
+            <p>Stay connected with fellow students through events, forums, and study groups:</p>
+            <ul>
+                <li><a href="#">Student Forums</a></li>
+                <li><a href="#">Join a Study Group</a></li>
+                <li><a href="#">Campus Social Events</a></li>
+            </ul>
+        </section>
+
+        <!-- Need Assistance Section -->
+        <section class="help">
+            <h2>Need Assistance?</h2>
+            <p>Don't hesitate to reach out for support:</p>
+            <ul>
+                <li><a href="support.html">Student Support</a></li>
+                <li><a href="support.html">Technical Assistance</a></li>
+                <li><a href="support.html">Counseling Services</a></li>
+            </ul>
+        </section>
+
+      
+        <footer>
+            <p>&copy; 2024 | All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
